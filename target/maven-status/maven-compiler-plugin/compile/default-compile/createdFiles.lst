@@ -1,6 +1,7 @@
 com\ideas2it\ems\service\DepartmentServiceImpl.class
 com\ideas2it\ems\model\SalaryAccount.class
 com\ideas2it\ems\util\Validator.class
+com\ideas2it\ems\connectionManager\HibernateConnection.class
 com\ideas2it\ems\dao\EmployeeDao.class
 com\ideas2it\ems\service\ProjectService.class
 com\ideas2it\ems\controller\ProjectController.class
@@ -24,4 +25,3 @@ com\ideas2it\ems\dao\DepartmentDaoImpl.class
 EmployeeManagementSystem.class
 com\ideas2it\ems\dao\ProjectDaoImpl.class
 com\ideas2it\ems\dao\ProjectDao.class
-com\ideas2it\ems\connectionmanager\HibernateConnection.class
