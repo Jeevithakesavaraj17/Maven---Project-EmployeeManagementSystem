@@ -16,7 +16,7 @@ import com.ideas2it.ems.model.Project;
  * @author  Jeevithakesavaraj
  */
 public class ProjectServiceImpl implements ProjectService {
-    private ProjectDao projectDao = new ProjectDaoImpl();
+    private final ProjectDao projectDao = new ProjectDaoImpl();
     
     @Override
     public Project addProject(String projectName) throws EmployeeException {

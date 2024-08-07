@@ -7,7 +7,6 @@ import com.ideas2it.ems.dao.DepartmentDaoImpl;
 import com.ideas2it.ems.exception.EmployeeException;
 import com.ideas2it.ems.model.Department;
 import com.ideas2it.ems.model.Employee;
-import com.ideas2it.ems.service.DepartmentService;
 
 /**
  * <p>
@@ -18,7 +17,7 @@ import com.ideas2it.ems.service.DepartmentService;
  * @author Jeevithakesavaraj
  */
 public class DepartmentServiceImpl implements DepartmentService {
-    private DepartmentDao departmentDao = new DepartmentDaoImpl();
+    private final DepartmentDao departmentDao = new DepartmentDaoImpl();
     
     @Override
     public Department addDepartment(String departmentName) throws EmployeeException {
@@ -40,10 +39,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     @Override 
     public boolean isDepartmentPresent(int departmentId) throws EmployeeException {
         Department department = departmentDao.retrieveDepartment(departmentId);
-        if (null == department) {
-            return false;
-        }
-        return true;
+        return null != department;
     }
 
     @Override

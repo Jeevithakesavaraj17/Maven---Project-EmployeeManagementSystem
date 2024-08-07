@@ -13,7 +13,6 @@ import com.ideas2it.ems.model.Employee;
 import com.ideas2it.ems.model.Project;
 import com.ideas2it.ems.service.ProjectService;
 import com.ideas2it.ems.service.ProjectServiceImpl;
-import com.ideas2it.ems.util.Validator;
 
 /**
  * <p>
@@ -25,8 +24,8 @@ import com.ideas2it.ems.util.Validator;
  */
 public class ProjectController {
     Scanner scanner = new Scanner(System.in);
-    private static Logger logger = LogManager.getLogger();
-    private ProjectService projectService = new ProjectServiceImpl();
+    private static final Logger logger = LogManager.getLogger();
+    private final ProjectService projectService = new ProjectServiceImpl();
 
     /**
      * <p>
@@ -63,7 +62,7 @@ public class ProjectController {
                 System.out.println("Exiting..");
                 break;
             default:
-                System.out.println("Invalid choice.");
+                logger.error("Invalid choice.Please enter correct choice");
             }
         }    
     }
@@ -80,7 +79,7 @@ public class ProjectController {
         try {
             Project project = projectService.addProject(projectName);
             System.out.println(project);
-            logger.info("Project added successfully : " + projectName);
+            logger.info("Project added successfully : {}", projectName);
         } catch (EmployeeException e) {
             logger.error(e.getMessage());
         }
@@ -119,19 +118,27 @@ public class ProjectController {
         int projectId = scanner.nextInt();
         try {
             Project project = projectService.getProject(projectId);
-            List<Employee> employees = new ArrayList<>(project.getEmployees());
-            String format = "| %-4s | %15s | %-4s | %-12s | %-12s | %-20s | %-10s \n";
-            System.out.format(format, "Id", "Name", "Age", "DepartmentId", "PhoneNumber", "MailId", "Experience");
-            for (Employee employee : employees) {
-                System.out.format(format, employee.getEmployeeId(),
-                                      employee.getEmployeeName(),
-                                      employee.getAge(),
-                                      employee.getDepartment().getDepartmentId(),
-                                      employee.getPhoneNumber(),
-                                      employee.getMailId(),
-                                      employee.getExperience());
+            if (null == project) {
+                logger.info("No project found.");
+            } else {
+                List<Employee> employees = new ArrayList<>(project.getEmployees());
+                if (employees.isEmpty()) {
+                    logger.info("No employees present in the project{}", project.getProjectName());
+                } else {
+                    String format = "| %-4s | %15s | %-4s | %-12s | %-12s | %-20s | %-10s \n";
+                    System.out.format(format, "Id", "Name", "Age", "DepartmentId", "PhoneNumber", "MailId", "Experience");
+                    for (Employee employee : employees) {
+                        System.out.format(format, employee.getEmployeeId(),
+                                employee.getEmployeeName(),
+                                employee.getAge(),
+                                employee.getDepartment().getDepartmentId(),
+                                employee.getPhoneNumber(),
+                                employee.getMailId(),
+                                employee.getExperience());
+                    }
+                }
             }
-            logger.info("Displayed List of employees in the project " + projectId);
+            logger.info("Displayed List of employees in the project {}", projectId);
         } catch (EmployeeException e) {
             logger.error(e.getMessage());
         }
@@ -156,7 +163,7 @@ public class ProjectController {
                 project.setProjectName(projectName);
                 Project projectObject = projectService.updateProjectName(project);
                 System.out.println(projectObject);
-                logger.info("Project name updated successfully for " + projectId);
+                logger.info("Project name updated successfully for {}", projectId);
             }
         } catch (EmployeeException e) {
             logger.error(e.getMessage());
@@ -180,10 +187,10 @@ public class ProjectController {
                 List<Employee> employees = new ArrayList<>(project.getEmployees());
                 if (employees.isEmpty()) {
                     if (projectService.isProjectDeleted(project)) {
-                        logger.info(project.getProjectName() + " project deleted successfully.");
+                        logger.info("{} project deleted successfully.", project.getProjectName());
                     }
                 } else {
-                    logger.warn("Enable to delete the project " + projectId + " because it has employees.");
+                    logger.warn("Enable to delete the project {} because it has employees.", projectId);
                 }
             }
         } catch (EmployeeException e) {
@@ -196,18 +203,14 @@ public class ProjectController {
      * @return number   integer to be validation
      */
     public int getValidNumber() {
-        boolean isValid = true;
-        while (isValid) {
-            try {
-                System.out.print("Enter choice : ");
-                int validNumber = scanner.nextInt();
-                isValid = false;
-                return validNumber;
-            } catch (InputMismatchException e) {
-                System.out.print("Invalid choice.");
-                scanner.next();
-            }   
+        int number = 0;
+        try {
+            System.out.print("Enter choice : ");
+            number = scanner.nextInt();
+        } catch (InputMismatchException e) {
+            logger.error("Invalid choice.");
+            getValidNumber();
         }
-        return 0;
+        return number;
     }
 }

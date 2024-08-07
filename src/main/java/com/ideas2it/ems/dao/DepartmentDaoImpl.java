@@ -1,19 +1,17 @@
 package com.ideas2it.ems.dao;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
-import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
 import org.hibernate.query.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.ideas2it.ems.connectionmanager.HibernateConnection;
+import com.ideas2it.ems.connectionManager.HibernateConnection;
 import com.ideas2it.ems.exception.EmployeeException;
 import com.ideas2it.ems.model.Department;
 import com.ideas2it.ems.model.Employee;
@@ -26,25 +24,22 @@ import com.ideas2it.ems.model.Employee;
  * @author JeevithaKesavaraj
  */
 public class DepartmentDaoImpl implements DepartmentDao {
-    private static Logger logger = LogManager.getLogger();
+    private static final Logger logger = LogManager.getLogger();
     
     @Override
     public Department insertDepartment(Department department) throws EmployeeException {
-        Session session = HibernateConnection.getFactory().openSession();
         Transaction transaction = null;
-        try {
+        try (Session session = HibernateConnection.getFactory().openSession()) {
             transaction = session.beginTransaction();
             session.save(department);
-            logger.debug(department.getDepartmentName() + " department added succesfully.");
+            logger.debug("{} department added successfully.", department.getDepartmentName());
             transaction.commit();
         } catch (HibernateException e) {
             if (transaction != null) {
                 transaction.rollback();
             }
-            logger.error("Unable to add the Department : " + department.getDepartmentName());
+            logger.error("Unable to add the Department : {}", department.getDepartmentName());
             throw new EmployeeException("Unable to add the Department : " + department.getDepartmentName(), e);
-        } finally {
-            session.close();
         }
         return department;
     }
@@ -53,7 +48,7 @@ public class DepartmentDaoImpl implements DepartmentDao {
     public List<Department> retrieveDepartments() throws EmployeeException {
         Session session = HibernateConnection.getFactory().openSession();
         Transaction transaction = null;
-        List<Department> departments = null;
+        List<Department> departments;
         try {
             transaction = session.beginTransaction();
             Query<Department> query = session.createQuery("FROM Department WHERE isDeleted = :isDeleted", Department.class)
@@ -77,7 +72,7 @@ public class DepartmentDaoImpl implements DepartmentDao {
     public Department retrieveDepartment(int departmentId) throws EmployeeException {
         Session session = HibernateConnection.getFactory().openSession();
         Transaction transaction = null;
-        Department department = null;
+        Department department;
         try {
             transaction = session.beginTransaction();
             department = session.createQuery("FROM Department WHERE isDeleted = false and departmentId = :departmentId", Department.class)
@@ -87,7 +82,7 @@ public class DepartmentDaoImpl implements DepartmentDao {
             if (transaction != null) {
                 transaction.rollback();
             }
-            logger.error("Unable to get department for the ID : " + departmentId);
+            logger.error("Unable to get department for the ID : {}", departmentId);
             throw new EmployeeException("Unable to get department" + departmentId, e);
         } finally {
             session.close();
@@ -105,7 +100,7 @@ public class DepartmentDaoImpl implements DepartmentDao {
             transaction = session.beginTransaction();
             department = session.createQuery("FROM Department WHERE isDeleted = false and departmentId = :departmentId", Department.class)
                                 .setParameter("departmentId", departmentId).uniqueResult();
-            if (department != null) {
+            if (null != department) {
                 employees = new ArrayList<>(department.getEmployees());
             }
             transaction.commit();
@@ -113,7 +108,8 @@ public class DepartmentDaoImpl implements DepartmentDao {
             if (transaction != null) {
                 transaction.rollback();
             }
-            logger.error("Unable to get employees for the department " + department.getDepartmentName());
+            assert department != null;
+            logger.error("Unable to get employees for the department {}", department.getDepartmentName());
             throw new EmployeeException("Unable to get employees for the department " + department.getDepartmentName(), e);
         } 
         return employees;
@@ -121,9 +117,8 @@ public class DepartmentDaoImpl implements DepartmentDao {
 
     @Override 
     public Department updateDepartmentName(Department department) throws EmployeeException {
-        Session session = HibernateConnection.getFactory().openSession();
         Transaction transaction = null;
-        try {
+        try (Session session = HibernateConnection.getFactory().openSession()) {
             transaction = session.beginTransaction();
             session.saveOrUpdate(department);
             transaction.commit();
@@ -131,22 +126,19 @@ public class DepartmentDaoImpl implements DepartmentDao {
             if (transaction != null) {
                 transaction.rollback();
             }
-            logger.error("Unable to update the department " + department.getDepartmentName());
+            logger.error("Unable to update the department {}", department.getDepartmentName());
             throw new EmployeeException("Unable to update the department " + department.getDepartmentName(), e);
-        } finally {
-            session.close();
         }
         return department;
     }
 
     @Override  
     public boolean isDepartmentDeleted(Department department) throws EmployeeException {
-        Session session = HibernateConnection.getFactory().openSession();
-        int departmentId = department.getDepartmentId();
         Transaction transaction = null;
-        try {
+        try (Session session = HibernateConnection.getFactory().openSession()) {
+            int departmentId = department.getDepartmentId();
             transaction = session.beginTransaction();
-            Query query = session.createQuery("UPDATE Department SET isDeleted = :isDeleted WHERE id = :departmentId");
+            Query<?> query = session.createQuery("UPDATE Department SET isDeleted = :isDeleted WHERE id = :departmentId");
             query.setParameter("isDeleted", true);
             query.setParameter("departmentId", departmentId);
             int row = query.executeUpdate();
@@ -158,10 +150,8 @@ public class DepartmentDaoImpl implements DepartmentDao {
             if (transaction != null) {
                 transaction.rollback();
             }
-            logger.error("Unable to delete the department" + department.getDepartmentName());
+            logger.error("Unable to delete the department{}", department.getDepartmentName());
             throw new EmployeeException("Unable to delete the department" + department.getDepartmentName(), e);
-        } finally { 
-            session.close();   
         }
         return false;
     }

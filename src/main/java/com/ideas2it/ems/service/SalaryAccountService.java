@@ -21,18 +21,18 @@ public interface SalaryAccountService {
      * @param salaryAccount        salary account details of the employee
      * @throws EmployeeException   If exception occurs, while adding the salary account details
      */
-    public void addSalaryAccount(SalaryAccount salaryAccount) throws EmployeeException;
+    void addSalaryAccount(SalaryAccount salaryAccount) throws EmployeeException;
 
     /**
      * <p>
      * Get salary account details of the employee
      * </p>
      *
-     * @param  id               employee's aaccount Id
+     * @param  id               employee's account id
      * @return SalaryAccount    salary account details
      * @throws EmployeeException  If exception occurs, while getting the salary account details
      */
-    public SalaryAccount getSalaryAccount(int id) throws EmployeeException;
+    SalaryAccount getSalaryAccount(int id) throws EmployeeException;
 
     /**
      * <p>
@@ -42,5 +42,5 @@ public interface SalaryAccountService {
      * @param salaryAccount        salary account details of the employee
      * @throws EmployeeException   If exception occurs, while updating the salary account details
      */
-    public void updateSalaryAccount(SalaryAccount salaryAccount) throws EmployeeException;
+    void updateSalaryAccount(SalaryAccount salaryAccount) throws EmployeeException;
 }

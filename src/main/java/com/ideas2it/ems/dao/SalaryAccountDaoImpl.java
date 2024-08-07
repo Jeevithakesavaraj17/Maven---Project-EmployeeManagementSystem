@@ -3,13 +3,11 @@ package com.ideas2it.ems.dao;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
-import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
-import org.hibernate.query.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.ideas2it.ems.connectionmanager.HibernateConnection;
+import com.ideas2it.ems.connectionManager.HibernateConnection;
 import com.ideas2it.ems.exception.EmployeeException;
 import com.ideas2it.ems.model.SalaryAccount;
 
@@ -22,13 +20,12 @@ import com.ideas2it.ems.model.SalaryAccount;
  * @author    JeevithaKesavaraj
  */
 public class SalaryAccountDaoImpl implements SalaryAccountDao {
-    private static Logger logger = LogManager.getLogger();
+    private static final Logger logger = LogManager.getLogger();
 
     @Override
     public void insertSalaryAccount(SalaryAccount salaryAccount) throws EmployeeException {
-        Session session = HibernateConnection.getFactory().openSession();
         Transaction transaction = null;
-        try {
+        try (Session session = HibernateConnection.getFactory().openSession()) {
             transaction = session.beginTransaction();
             session.save(salaryAccount);
             transaction.commit();
@@ -36,19 +33,16 @@ public class SalaryAccountDaoImpl implements SalaryAccountDao {
             if (transaction != null) {
                 transaction.rollback();
             }
-            logger.error("Unable to add the account details : " + salaryAccount.getAccountNumber());
+            logger.error("Unable to add the account details : {}", salaryAccount.getAccountNumber());
             throw new EmployeeException("Unable to add the account details : " + salaryAccount.getAccountNumber(), e);
-        } finally {
-            session.close();
         }
     }
 
     @Override 
     public SalaryAccount retrieveSalaryAccount(int id) throws EmployeeException {
-        Session session = HibernateConnection.getFactory().openSession();
         Transaction transaction = null;
-        SalaryAccount salaryAccount = null;
-        try {
+        SalaryAccount salaryAccount;
+        try (Session session = HibernateConnection.getFactory().openSession()) {
             transaction = session.beginTransaction();
             salaryAccount = session.get(SalaryAccount.class, id);
             transaction.commit();
@@ -58,17 +52,14 @@ public class SalaryAccountDaoImpl implements SalaryAccountDao {
             }
             logger.error("Unable to get the salary account details");
             throw new EmployeeException("Unable to get the salary account details", e);
-        } finally {
-            session.close();
         }
         return salaryAccount;
     }
 
     @Override
     public void updateSalaryAccount(SalaryAccount salaryAccount) throws EmployeeException {
-        Session session = HibernateConnection.getFactory().openSession();
         Transaction transaction = null;
-        try {
+        try (Session session = HibernateConnection.getFactory().openSession()) {
             transaction = session.beginTransaction();
             session.saveOrUpdate(salaryAccount);
             transaction.commit();
@@ -76,10 +67,8 @@ public class SalaryAccountDaoImpl implements SalaryAccountDao {
             if (transaction != null) {
                 transaction.rollback();
             }
-            logger.error("Unable to update the account details : " + salaryAccount.getAccountNumber());
+            logger.error("Unable to update the account details : {}", salaryAccount.getAccountNumber());
             throw new EmployeeException("Unable to update the account details : " + salaryAccount.getAccountNumber(), e);
-        } finally {
-            session.close();
         }
     }
 

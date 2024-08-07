@@ -18,10 +18,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.ideas2it.ems.model.Department;
-import com.ideas2it.ems.model.Project;
-import com.ideas2it.ems.model.SalaryAccount;
-
 /**
  * <p>
  * Employee is a person who is working in the company
@@ -31,7 +27,7 @@ import com.ideas2it.ems.model.SalaryAccount;
  * employeeId     Id of the employee
  * employeeName   Name of the employee
  * DateOfBirth    employee's date of birth
- * department     department details where employee have alloted
+ * department     department details where employee have allotted
  * salaryAccount  Salary account details
  * phoneNumber    employee's mobile number
  * mailId         employee's mail id
@@ -167,7 +163,7 @@ public class Employee {
     public String getProjectDetails() {
         StringBuilder projectDetails = new StringBuilder();
         for (Project project : getProjects()) {
-            projectDetails.append(project.getProjectName() + ", ");
+            projectDetails.append(project.getProjectName()).append(", ");
         }
         return projectDetails.toString();
     }
@@ -180,7 +176,7 @@ public class Employee {
      * <p>
      * To calculate age from Date of Birth 
      * </p>
-     * @return age      age of particular employee
+     * @return age   employee's age
      */
     public int getAge() {
         LocalDate dob = getDateOfBirth();

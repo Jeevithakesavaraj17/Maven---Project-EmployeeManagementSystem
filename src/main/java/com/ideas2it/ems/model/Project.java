@@ -8,16 +8,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import com.ideas2it.ems.model.Employee;
-
 /**
  * <p>
- * This classs represents Project Details and set of employees who are all in same projectId.
+ * This class represents Project Details and set of employees who are all in same projectId.
  * projectId    Id of the project 
  * ProjectName   Name of the Project
  * Set<Employee>  Set of employees in the particular project

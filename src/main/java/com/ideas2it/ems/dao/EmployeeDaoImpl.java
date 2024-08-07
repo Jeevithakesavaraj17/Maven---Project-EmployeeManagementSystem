@@ -1,23 +1,17 @@
 package com.ideas2it.ems.dao;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
-import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
 import org.hibernate.query.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.ideas2it.ems.connectionmanager.HibernateConnection;
-import com.ideas2it.ems.dao.EmployeeDao;
+import com.ideas2it.ems.connectionManager.HibernateConnection;
 import com.ideas2it.ems.model.Employee;
-import com.ideas2it.ems.model.Department;
-import com.ideas2it.ems.model.Project;
 import com.ideas2it.ems.exception.EmployeeException;
 
 /**
@@ -28,13 +22,12 @@ import com.ideas2it.ems.exception.EmployeeException;
  * @author Jeevithakesavaraj
  */
 public class EmployeeDaoImpl implements EmployeeDao {
-    private static Logger logger = LogManager.getLogger();
+    private static final Logger logger = LogManager.getLogger();
     
     @Override
     public Employee insertEmployee(Employee employee) throws EmployeeException {
-        Session session = HibernateConnection.getFactory().openSession();
         Transaction transaction = null;
-        try {
+        try (Session session = HibernateConnection.getFactory().openSession()) {
             transaction = session.beginTransaction();
             session.save(employee);
             transaction.commit();
@@ -42,10 +35,8 @@ public class EmployeeDaoImpl implements EmployeeDao {
             if (transaction != null) {
                 transaction.rollback();
             }
-            logger.error("Unable to add the employee" + employee.getEmployeeName());
+            logger.error("Unable to add the employee{}", employee.getEmployeeName());
             throw new EmployeeException("Unable to add the employee" + employee.getEmployeeName(), e);
-        } finally {
-            session.close();
         }
         return employee;
     }
@@ -54,7 +45,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
     public List<Employee> retrieveEmployees() throws EmployeeException {
         Session session = HibernateConnection.getFactory().openSession();
         Transaction transaction = null;
-        List<Employee> employees = null;
+        List<Employee> employees;
         try {
             transaction = session.beginTransaction();
             Query<Employee> query = session.createQuery("FROM Employee WHERE isDeleted = :isDeleted", Employee.class)
@@ -67,8 +58,6 @@ public class EmployeeDaoImpl implements EmployeeDao {
             }
             logger.error("Unable to get the employees");
             throw new EmployeeException("Unable to get employees", e);
-        } finally {
-            session.close();
         }
         return employees;
     }
@@ -77,7 +66,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
     public Employee retrieveEmployeeById(int id) throws EmployeeException {
         Session session = HibernateConnection.getFactory().openSession();
         Transaction transaction = null;
-        Employee employee = null;
+        Employee employee;
         try {
             transaction = session.beginTransaction();
             employee = session.createQuery("FROM Employee WHERE isDeleted = :isDeleted and employeeId = :employeeId", Employee.class)
@@ -88,7 +77,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
             if (transaction != null) {
                 transaction.rollback();
             }
-            logger.error("Unable to get the employee" + id );
+            logger.error("Unable to get the employee{}", id);
             throw new EmployeeException("Unable to get employee" + id, e);
         } finally {
             session.close();
@@ -99,9 +88,8 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
     @Override
     public Employee updateEmployeeDetails(Employee employee) throws EmployeeException {
-        Session session = HibernateConnection.getFactory().openSession();
         Transaction transaction = null;
-        try {
+        try (Session session = HibernateConnection.getFactory().openSession()) {
             transaction = session.beginTransaction();
             session.saveOrUpdate(employee);
             transaction.commit();
@@ -109,21 +97,18 @@ public class EmployeeDaoImpl implements EmployeeDao {
             if (transaction != null) {
                 transaction.rollback();
             }
-            logger.error("Unable to update the employee " + employee.getEmployeeId());
+            logger.error("Unable to update the employee {}", employee.getEmployeeId());
             throw new EmployeeException("Unable to update the employee " + employee.getEmployeeId(), e);
-        } finally {
-            session.close();
         }
         return employee;
     }
    
     @Override
     public boolean isEmployeeDeleted(int employeeId) throws EmployeeException {
-        Session session = HibernateConnection.getFactory().openSession();
         Transaction transaction = null;
-        try {
+        try (Session session = HibernateConnection.getFactory().openSession()) {
             transaction = session.beginTransaction();
-            Query<Employee> query = session.createQuery("UPDATE Employee SET isDeleted = :isDeleted WHERE id = :employeeId");
+            Query<?> query = session.createQuery("UPDATE Employee SET isDeleted = :isDeleted WHERE id = :employeeId");
             query.setParameter("isDeleted", true);
             query.setParameter("employeeId", employeeId);
             int row = query.executeUpdate();
@@ -135,10 +120,8 @@ public class EmployeeDaoImpl implements EmployeeDao {
             if (transaction != null) {
                 transaction.rollback();
             }
-            logger.error("Unable to delete the employee " + employeeId);
+            logger.error("Unable to delete the employee {}", employeeId);
             throw new EmployeeException("Unable to delete the employee" + employeeId, e);
-        } finally { 
-            session.close();
         }
         return false;
     }

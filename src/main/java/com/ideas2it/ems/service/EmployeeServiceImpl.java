@@ -10,12 +10,6 @@ import com.ideas2it.ems.model.Employee;
 import com.ideas2it.ems.model.Department;
 import com.ideas2it.ems.model.Project;
 import com.ideas2it.ems.model.SalaryAccount;
-import com.ideas2it.ems.service.DepartmentService;
-import com.ideas2it.ems.service.DepartmentServiceImpl;
-import com.ideas2it.ems.service.ProjectService;
-import com.ideas2it.ems.service.ProjectServiceImpl;
-import com.ideas2it.ems.service.SalaryAccountService;
-import com.ideas2it.ems.service.SalaryAccountServiceImpl;
 
 /**
  * <p>
@@ -25,10 +19,10 @@ import com.ideas2it.ems.service.SalaryAccountServiceImpl;
  * @author Jeevithakesavaraj
  */
 public class EmployeeServiceImpl implements EmployeeService {
-    private DepartmentService departmentService = new DepartmentServiceImpl();
-    private ProjectService projectService = new ProjectServiceImpl();
-    private SalaryAccountService salaryAccountService = new SalaryAccountServiceImpl();
-    private EmployeeDao employeeDao = new EmployeeDaoImpl();
+    private final DepartmentService departmentService = new DepartmentServiceImpl();
+    private final ProjectService projectService = new ProjectServiceImpl();
+    private final SalaryAccountService salaryAccountService = new SalaryAccountServiceImpl();
+    private final EmployeeDao employeeDao = new EmployeeDaoImpl();
   
     @Override
     public Employee addEmployee(String employeeName, 
@@ -64,19 +58,13 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public boolean isEmployeeListEmpty() throws EmployeeException {
         List<Employee> employees = employeeDao.retrieveEmployees();
-        if (employees.isEmpty()) {
-            return true;
-        }
-        return false;
+        return employees.isEmpty();
     }
 
     @Override
     public boolean isEmployeePresent(int employeeId) throws EmployeeException {
         Employee employee = employeeDao.retrieveEmployeeById(employeeId);
-        if (null == employee) {
-            return false;
-        }
-        return true;
+        return null != employee;
     }
 
     @Override

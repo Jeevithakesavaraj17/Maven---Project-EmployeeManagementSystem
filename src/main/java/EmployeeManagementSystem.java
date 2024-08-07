@@ -14,9 +14,10 @@ import com.ideas2it.ems.controller.ProjectController;
 public class EmployeeManagementSystem {
 
     public static void main(String[] args) {
-        EmployeeManagementSystem employeemanagement = new EmployeeManagementSystem();
-        employeemanagement.displayMenu();
+        EmployeeManagementSystem employeemanagementsystem = new EmployeeManagementSystem();
+        employeemanagementsystem.displayMenu();
     }
+
 
     /**
      * <p>

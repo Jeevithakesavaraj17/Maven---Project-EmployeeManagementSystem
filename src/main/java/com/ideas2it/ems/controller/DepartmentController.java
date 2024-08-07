@@ -78,7 +78,7 @@ public class DepartmentController {
         try {
             Department department = departmentService.addDepartment(departmentName); 
             System.out.println(department);
-            logger.info(departmentName + " department added successfully.");
+            logger.info("{} department added successfully.", departmentName);
         } catch (EmployeeException e) {
             logger.error(e.getMessage());
         }
@@ -138,7 +138,7 @@ public class DepartmentController {
                                                    employee.getProjectDetails());
                         }
                     }
-                    logger.info("Displayed list of employees in the department " + department.getDepartmentName());
+                    logger.info("Displayed list of employees in the department {}", department.getDepartmentName());
                 }
             }
         } catch (EmployeeException e) {
@@ -165,7 +165,7 @@ public class DepartmentController {
                 department.setDepartmentName(departmentName);
                 Department departmentObject = departmentService.updateDepartmentName(department);
                 System.out.println(departmentObject);
-                logger.info("Department name updated successfully for " + departmentId);
+                logger.info("Department name updated successfully for {}", departmentId);
             }
         } catch (EmployeeException e) {
             logger.error(e.getMessage());
@@ -184,15 +184,15 @@ public class DepartmentController {
             int departmentId = scanner.nextInt();
             Department department = departmentService.getDepartment(departmentId);
             if (null == department) {
-                logger.warn("No department Found.");
+                logger.info("No department Found.");
             } else {
                 List<Employee> employees = new ArrayList<>(department.getEmployees());
                 if (employees.isEmpty()) {
                     if (departmentService.isDepartmentDeleted(department)) {
-                        logger.info(department.getDepartmentName() + " department deleted successfully.");
+                        logger.info("{} department deleted successfully.", department.getDepartmentName());
                     }
                 } else {
-                    logger.warn("Enable to delete " + department.getDepartmentName() + " the department because it has employees.");
+                    logger.warn("Enable to delete {} the department because it has employees.", department.getDepartmentName());
                 }
             }
         } catch (EmployeeException e) {

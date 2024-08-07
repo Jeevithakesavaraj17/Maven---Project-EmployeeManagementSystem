@@ -4,7 +4,6 @@ import com.ideas2it.ems.dao.SalaryAccountDao;
 import com.ideas2it.ems.dao.SalaryAccountDaoImpl;
 import com.ideas2it.ems.exception.EmployeeException;
 import com.ideas2it.ems.model.SalaryAccount;
-import com.ideas2it.ems.service.SalaryAccountService;
 
 /**
  * <p>
@@ -15,7 +14,7 @@ import com.ideas2it.ems.service.SalaryAccountService;
  * @author    JeevithaKesavaraj
  */
 public class SalaryAccountServiceImpl implements SalaryAccountService {
-    private SalaryAccountDao salaryAccountDao = new SalaryAccountDaoImpl();
+    private final SalaryAccountDao salaryAccountDao = new SalaryAccountDaoImpl();
 
     @Override
     public void addSalaryAccount(SalaryAccount salaryAccount) throws EmployeeException {

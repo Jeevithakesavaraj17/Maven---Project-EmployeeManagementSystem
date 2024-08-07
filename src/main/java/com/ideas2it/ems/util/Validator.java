@@ -1,7 +1,6 @@
 package com.ideas2it.ems.util;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -50,7 +49,7 @@ public class Validator {
      */
     public static boolean isValidDate(String inputDate) { 
         try {
-             LocalDate date = LocalDate.parse(inputDate);
+             LocalDate.parse(inputDate);
              return true;
         } catch (Exception e) {
             return false;
@@ -63,16 +62,13 @@ public class Validator {
      * </p>
      *
      * @param phoneNumber   phone number which we have to validate
-     * @return  boolean     If given phone number has ten digit number, returns true
+     * @return  boolean     If given phone number has ten-digit number, returns true
      *                     else return false. 
      */
     public static boolean isValidPhoneNumber(String phoneNumber) {
         Pattern pattern = Pattern.compile("(0/91)?[7-9][0-9]{9}");  
         Matcher matcher = pattern.matcher(phoneNumber);
-        if (matcher.matches()) {  
-            return true;
-        }
-        return false;
+        return matcher.matches();
     } 
 
     /**
@@ -81,7 +77,7 @@ public class Validator {
      * </p>
      *
      * @param  mailId    mail id which we have to validate 
-     * @return boolean    If mail Id has alphabets and number with @, returns true
+     * @return boolean    If mail id has alphabets and number with @, returns true
      *                   else returns false.
      */
     public static boolean isValidMailId(String mailId) {
@@ -89,10 +85,7 @@ public class Validator {
         String regex = "^[a-z0-9+_.-]+@(.+)$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(emailId);
-        if (matcher.matches()) {
-            return true;
-        }
-        return false;
+        return matcher.matches();
     }  
     
     /**
@@ -100,15 +93,12 @@ public class Validator {
      * This method is used to validate experience
      * </p>
      *
-     * @param exerience   experience which we have to validate
-     * @return boolean    If experience is betweeen 0 and 30, returns true
+     * @param experience   experience which we have to validate
+     * @return boolean    If experience is between 0 and 30, returns true
      *                   else false.
      */
     public static boolean isValidExperience(int experience) {
-        if (experience >= 0 && experience < 30) {
-            return true;
-        }
-        return false;
+        return experience >= 0 && experience < 30;
     }
 
 }

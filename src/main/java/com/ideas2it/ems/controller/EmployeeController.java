@@ -34,11 +34,11 @@ import com.ideas2it.ems.util.Validator;
  */
 public class EmployeeController {
     Scanner scanner = new Scanner(System.in);
-    private static Logger logger = LogManager.getLogger();
-    private EmployeeService employeeService = new EmployeeServiceImpl();
-    private DepartmentService departmentService = new DepartmentServiceImpl();
-    private ProjectService projectService = new ProjectServiceImpl();
-    private SalaryAccountService salaryAccountService = new SalaryAccountServiceImpl(); 
+    private static final Logger logger = LogManager.getLogger();
+    private final EmployeeService employeeService = new EmployeeServiceImpl();
+    private final DepartmentService departmentService = new DepartmentServiceImpl();
+    private final ProjectService projectService = new ProjectServiceImpl();
+    private final SalaryAccountService salaryAccountService = new SalaryAccountServiceImpl();
     
     /**
      * <p>
@@ -80,7 +80,7 @@ public class EmployeeController {
                 System.out.println("Exiting...");
                 break;
             default:
-                System.out.println("Invalid Choice.");
+                logger.error("Invalid Choice.");
             }
         }
     }
@@ -125,7 +125,7 @@ public class EmployeeController {
                                                           phoneNumber, mailId, experience, 
                                                          departmentId, accountNumber, ifscCode);
                 System.out.println(employee);
-                logger.info(employee.getEmployeeName() + " added successfully.");
+                logger.info("{} added successfully.", employee.getEmployeeName());
             }
         } catch (EmployeeException e) {
             logger.error(e.getMessage());
@@ -220,7 +220,7 @@ public class EmployeeController {
                     System.out.print("Enter Department Id : ");
                     int departmentId = scanner.nextInt();
                     while (!departmentService.isDepartmentPresent(departmentId)) {
-                        System.out.print("Invalid departmentId. Please enter correct Id : ");
+                        logger.error("Invalid departmentId. Please enter correct Id : ");
                         departmentId = scanner.nextInt();
                     }
                     Department department = departmentService.getDepartment(departmentId);
@@ -244,7 +244,7 @@ public class EmployeeController {
                 }
                 Employee updatedEmployee = employeeService.updateEmployeeDetails(employee);
                 System.out.println(updatedEmployee);
-                logger.info("Details updated successfully for " + employee.getEmployeeName());
+                logger.info("Details updated successfully for {}", employee.getEmployeeName());
             }   
         } catch (EmployeeException e) {
             logger.error(e.getMessage());
@@ -261,7 +261,7 @@ public class EmployeeController {
         int employeeId = getEmployeeId();
         try {
             if (!employeeService.isEmployeePresent(employeeId)) {
-                logger.warn("No Employee Found.");
+                logger.info("No Employee Found.");
             } else {
                 Employee employee = employeeService.getEmployeeById(employeeId); 
                 List<Project> projects = projectService.getProjects();
@@ -281,12 +281,12 @@ public class EmployeeController {
                         logger.warn("No project found.");
                     } else {
                         employeeService.addProjectToEmployee(project, employee);
-                        logger.info(project.getProjectName() + "project added successfully for " + employee.getEmployeeName());
+                        logger.info("{}project added successfully for {}", project.getProjectName(), employee.getEmployeeName());
                     }
                 }
             }  
         } catch (EmployeeException e) {
-            logger.error("Employee is already assigned to the project" + e.getMessage());
+            logger.error("Employee is already assigned to the project{}", e.getMessage());
         }
     }
 
@@ -305,7 +305,7 @@ public class EmployeeController {
                 Employee employee = employeeService.getEmployeeById(employeeId);
                 List<Project> projects = new ArrayList<>(employee.getProjects());
                 if (projects.isEmpty()) {
-                    System.out.println("No Projects Found.");
+                    logger.info("No Projects Found.");
                 } else {
                     String format = "| %-4s | %15s \n";
                     System.out.format(format, "Id", "Name");
@@ -313,7 +313,7 @@ public class EmployeeController {
                         System.out.format(format, project.getProjectId(), 
                                             project.getProjectName());
                     }
-                    logger.info("List of projects of employee" + employee.getEmployeeName());
+                    logger.info("List of projects of employee{}", employee.getEmployeeName());
                 }
             }
         } catch (EmployeeException e) {
@@ -331,7 +331,7 @@ public class EmployeeController {
         try {
             if (employeeService.isEmployeePresent(employeeId)) {
                 if (employeeService.isEmployeeDeleted(employeeId)) {
-                    logger.info("Employee " + employeeId + " Deleted.");
+                    logger.info("Employee {} Deleted.", employeeId);
                 }
             } else {
                 logger.warn("No employee found.");
@@ -347,16 +347,12 @@ public class EmployeeController {
      */
     public int getEmployeeId() {
         int employeeId = 0;
-        boolean isValid = true;
-        while (isValid) {
-            try {
-                System.out.print("Enter Employee ID : ");
-                employeeId = scanner.nextInt();
-                isValid = false;                
-            } catch (Exception e) {
-                System.out.println("Invalid type.");
-                scanner.next();
-            }
+        try {
+            System.out.print("Enter Employee ID : ");
+            employeeId = scanner.nextInt();
+        } catch (Exception e) {
+            logger.error("Invalid Type.");
+            getEmployeeId();
         }
         return employeeId;
     }
@@ -369,8 +365,8 @@ public class EmployeeController {
         System.out.print("Enter Name : ");
         String employeeName = scanner.nextLine();
         while (!Validator.isValidName(employeeName)) {
-            System.out.println("Invalid format."
-                               + "Enter Name :");
+            logger.error("Invalid format.");
+            System.out.print("Enter Name :");
             employeeName = scanner.nextLine();
         }
         return employeeName;
@@ -382,20 +378,19 @@ public class EmployeeController {
      */
     public LocalDate getDateOfBirth() {
         LocalDate dateOfBirth = null;
-        String date = null;
+        String date;
         try {
             System.out.print("Enter Date Of Birth (YYYY-MM-DD) : ");
             date = scanner.nextLine();
             while (!Validator.isValidDate(date)) {
-                System.out.print("Invalid format. Please enter correct"
+                System.out.print("Invalid date format.Please enter correct"
                                   + "format(YYYY-MM-DD) : ");
                 date = scanner.nextLine();
             }
             dateOfBirth = LocalDate.parse(date);
         } catch (InputMismatchException e) {
-            System.out.print("Invalid format. Please enter correct"
-                                  + "format(YYYY-MM-DD) : ");
-            date = scanner.nextLine();
+            logger.error("Invalid date format.");
+            getDateOfBirth();
         }
         return dateOfBirth;
     }
@@ -405,19 +400,15 @@ public class EmployeeController {
      * @return number   integer to be validation
      */
     public int getValidNumber() {
-        boolean isValid = true;
-        while (isValid) {
-            try {
-                System.out.print("Enter choice : ");
-                int validNumber = scanner.nextInt();
-                isValid = false;
-                return validNumber;
-            } catch (InputMismatchException e) {
-                System.out.print("Invalid choice.");
-                scanner.next();
-            }   
+        int validNumber = 0;
+        try {
+            System.out.print("Enter choice : ");
+            validNumber = scanner.nextInt();
+        } catch (InputMismatchException e) {
+            logger.error("Invalid choice.");
+            getValidNumber();
         }
-        return 0;
+        return validNumber;
     }
 
     /**
@@ -425,8 +416,8 @@ public class EmployeeController {
      * @return phoneNumber     employee's phone number
      */
     public long getPhoneNumber() {
-        long phoneNumber = 0; 
-        String mobileNumber = null;
+        long phoneNumber = 0;
+        String mobileNumber;
         try {
             System.out.print("Enter PhoneNumber : ");
             phoneNumber = scanner.nextLong();
@@ -438,10 +429,8 @@ public class EmployeeController {
                 mobileNumber = String.valueOf(phoneNumber);
             }
         } catch (InputMismatchException e) {
-            System.out.print("Invalid format."
-                                 + "Please Enter PhoneNumber :");
-            phoneNumber = scanner.nextLong();
-            mobileNumber = String.valueOf(phoneNumber);
+            logger.error("Invalid format.Please enter correct mobile number format.");
+            getPhoneNumber();
         }
         return phoneNumber;
     }
@@ -454,7 +443,7 @@ public class EmployeeController {
         System.out.print("Enter MailId : ");
         String mailId = scanner.nextLine();
         while (!Validator.isValidMailId(mailId)) {  
-            System.out.print("Invalid format."
+            logger.error("Invalid format."
                              + "Please enter correct format :");
             mailId = scanner.nextLine();
         }
@@ -476,9 +465,8 @@ public class EmployeeController {
                 experience = scanner.nextInt();
             }
         } catch (InputMismatchException e) {
-            System.out.print("Invalid format."
-                                 + "Please Enter correct Experience :");
-            experience = scanner.nextInt();
+            logger.error("Invalid format.");
+            getExperience();
         }
         return experience;
     }
