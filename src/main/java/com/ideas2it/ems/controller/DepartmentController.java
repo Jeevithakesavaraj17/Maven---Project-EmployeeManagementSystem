@@ -115,30 +115,27 @@ public class DepartmentController {
         System.out.print("Enter Department Id : ");
         int departmentId = scanner.nextInt();
         try {
-            Department department = departmentService.getDepartment(departmentId);
-            if (null == department) {
-                logger.warn("No department Found.");
-            } else {
-                List<Employee> employees = new ArrayList<>(department.getEmployees()); 
+            if(departmentService.isDepartmentPresent(departmentId)) {
+                List<Employee> employees = departmentService.getEmployeesByDepartment(departmentId);
                 if (employees.isEmpty()) {
                     logger.warn("No employees Found");
                 } else {
-                    String format = "| %-4s | %15s | %-4s | %-12s | %-12s | %-20s | %-10s | %-20s \n";
-                    System.out.format(format, "Id", "Name", "Age", "DepartmentId",
+                    String format = "| %-4s | %15s | %-4s | %-15s | %-12s | %-20s | %-10s | %-20s \n";
+                    System.out.format(format, "Id", "Name", "Age", "DepartmentName",
                                              "PhoneNumber", "MailId", "Experience", "Projects");
                     for (Employee employee : employees) {
                         if (!employee.getIsDeleted()) {
                             System.out.format(format, employee.getEmployeeId(),
                                                    employee.getEmployeeName(),
                                                    employee.getAge(),
-                                                   employee.getDepartment().getDepartmentId(),
+                                                   employee.getDepartment().getDepartmentName(),
                                                    employee.getPhoneNumber(),
                                                    employee.getMailId(),
                                                    employee.getExperience(),
                                                    employee.getProjectDetails());
                         }
                     }
-                    logger.info("Displayed list of employees in the department {}", department.getDepartmentName());
+                    logger.info("Displayed list of employees in the department {}", departmentId);
                 }
             }
         } catch (EmployeeException e) {

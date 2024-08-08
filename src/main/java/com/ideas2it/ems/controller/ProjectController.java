@@ -121,7 +121,7 @@ public class ProjectController {
             if (null == project) {
                 logger.info("No project found.");
             } else {
-                List<Employee> employees = new ArrayList<>(project.getEmployees());
+                List<Employee> employees = projectService.getEmployeesByProject(projectId);
                 if (employees.isEmpty()) {
                     logger.info("No employees present in the project{}", project.getProjectName());
                 } else {

@@ -47,45 +47,27 @@ public class ProjectDaoImpl implements ProjectDao {
 
     @Override
     public List<Project> retrieveProjects() throws EmployeeException {
-        Session session = HibernateConnection.getFactory().openSession();
-        Transaction transaction = null;
         List<Project> projects;
-        try {
-            transaction = session.beginTransaction();
+        try (Session session = HibernateConnection.getFactory().openSession()) {
             Query<Project> query = session.createQuery("FROM Project WHERE isDeleted = :isDeleted", Project.class).setParameter("isDeleted", false);
             projects = query.list();
-            transaction.commit();
         } catch (HibernateException e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
             logger.error("Unable to get the list of projects.");
             throw new EmployeeException("Unable to get the list of projects.", e);
-        } finally {
-            session.close(); 
         }
         return projects;
     }
 
     @Override
     public Project retrieveProject(int projectId) throws EmployeeException {
-        Session session = HibernateConnection.getFactory().openSession();
-        Transaction transaction = null;
         Project project;
-        try {
-            transaction = session.beginTransaction();
+        try (Session session = HibernateConnection.getFactory().openSession()) {
             Query<Project> query = session.createQuery("FROM Project where projectId = :projectId and isDeleted = false", Project.class);
             query.setParameter("projectId", projectId);
             project = query.uniqueResult();
-            transaction.commit();
         } catch (HibernateException e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
             logger.error("Unable to get the project {}", projectId);
             throw new EmployeeException("Unable to get the project" + projectId, e);
-        } finally {
-            session.close();
         }
         return project;
     }
@@ -138,27 +120,20 @@ public class ProjectDaoImpl implements ProjectDao {
 
     @Override
     public List<Employee> retrieveEmployeesByProject(int projectId) throws EmployeeException {
-        Session session = HibernateConnection.getFactory().openSession();
-        Transaction transaction = null;
         Project project = null;
         List<Employee> employees = null;
-        try {
-            transaction = session.beginTransaction();
+        try (Session session = HibernateConnection.getFactory().openSession()) {
             String query = "select p from Project p LEFT JOIN FETCH p.employees WHERE p.projectId = :id";
-            project = session.createQuery(query, Project.class).setParameter("projectId", projectId).uniqueResult();
+            project = session.createQuery(query, Project.class).setParameter("id", projectId).uniqueResult();
             if (null != project) {
-                employees = new ArrayList<>( project.getEmployees()); 
-            } 
-        } catch (HibernateException e) {
-            if (transaction != null) {
-                transaction.rollback();
+                employees = new ArrayList<>( project.getEmployees());
             }
-            assert project != null;
-            logger.error("Unable to get the employees for the project {}", project.getProjectName());
-            throw new EmployeeException("Unable to get the employees for the project" + project.getProjectName(), e);
+        } catch (HibernateException e) {
+            logger.error("Unable to get the employees for the project {}", projectId);
+            throw new EmployeeException("Unable to get the employees for the project" + projectId, e);
         }
         return employees;
-    }  
+    }
  
     @Override  
     public boolean isProjectDeleted(Project project) throws EmployeeException {

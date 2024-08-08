@@ -1,107 +1,173 @@
-2024-08-07 11:00:52 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.15.Final
-2024-08-07 11:00:53 INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2024-08-07 11:00:53 WARN  org.hibernate.orm.connections.pooling - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
-2024-08-07 11:00:53 INFO  org.hibernate.orm.connections.pooling - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/employee_management]
-2024-08-07 11:00:53 INFO  org.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {user=root}
-2024-08-07 11:00:53 INFO  org.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
-2024-08-07 11:00:53 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 20 (min=1)
-2024-08-07 11:00:54 INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-2024-08-07 11:00:55 INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@65634e76] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
-2024-08-07 11:00:55 INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2024-08-07 11:00:56 INFO  com.ideas2it.ems.controller.EmployeeController - All employees are displayed.
-2024-08-07 11:14:05 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.15.Final
-2024-08-07 11:14:05 INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2024-08-07 11:14:06 WARN  org.hibernate.orm.connections.pooling - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
-2024-08-07 11:14:06 INFO  org.hibernate.orm.connections.pooling - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/employee_management]
-2024-08-07 11:14:06 INFO  org.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {user=root}
-2024-08-07 11:14:06 INFO  org.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
-2024-08-07 11:14:06 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 20 (min=1)
-2024-08-07 11:14:06 INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-2024-08-07 11:14:07 INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@4f281aaf] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
-2024-08-07 11:14:07 INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2024-08-07 11:14:08 INFO  com.ideas2it.ems.controller.EmployeeController - All employees are displayed.
-2024-08-07 12:36:29 INFO  com.ideas2it.ems.controller.EmployeeController - Vinetha added successfully.
-2024-08-07 13:04:05 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.15.Final
-2024-08-07 13:04:05 INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2024-08-07 13:04:05 WARN  org.hibernate.orm.connections.pooling - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
-2024-08-07 13:04:05 INFO  org.hibernate.orm.connections.pooling - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/employee_management]
-2024-08-07 13:04:05 INFO  org.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {user=root}
-2024-08-07 13:04:05 INFO  org.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
-2024-08-07 13:04:05 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 20 (min=1)
-2024-08-07 13:04:06 INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-2024-08-07 13:04:07 INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@f2b90fc] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
-2024-08-07 13:04:07 INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2024-08-07 13:04:07 INFO  com.ideas2it.ems.controller.DepartmentController - Departments displayed
-2024-08-07 13:04:15 INFO  com.ideas2it.ems.controller.DepartmentController - Departments displayed
-2024-08-07 13:04:18 INFO  com.ideas2it.ems.controller.DepartmentController - Displayed list of employees in the department HR
-2024-08-07 13:04:41 INFO  com.ideas2it.ems.controller.ProjectController - Displayed list of departments.
-2024-08-07 13:04:46 INFO  com.ideas2it.ems.controller.ProjectController - Displayed list of departments.
-2024-08-07 13:04:49 INFO  com.ideas2it.ems.controller.ProjectController - Displayed List of employees in the project 1
-2024-08-07 15:37:07 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.15.Final
-2024-08-07 15:37:07 INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2024-08-07 15:37:07 WARN  org.hibernate.orm.connections.pooling - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
-2024-08-07 15:37:07 INFO  org.hibernate.orm.connections.pooling - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/employee_management]
-2024-08-07 15:37:07 INFO  org.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {user=root}
-2024-08-07 15:37:07 INFO  org.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
-2024-08-07 15:37:07 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 20 (min=1)
-2024-08-07 15:37:08 INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-2024-08-07 15:37:09 INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@f2b90fc] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
-2024-08-07 15:37:09 INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2024-08-07 15:37:09 INFO  com.ideas2it.ems.controller.DepartmentController - Departments displayed
-2024-08-07 15:38:54 INFO  com.ideas2it.ems.controller.DepartmentController - Departments displayed
-2024-08-07 15:38:55 INFO  com.ideas2it.ems.controller.DepartmentController - Displayed list of employees in the department HR
-2024-08-07 15:40:18 INFO  com.ideas2it.ems.controller.DepartmentController - security department added successfully.
-2024-08-07 15:40:38 INFO  com.ideas2it.ems.controller.DepartmentController - Department name updated successfully for 7
-2024-08-07 15:40:42 INFO  com.ideas2it.ems.controller.DepartmentController - Departments displayed
-2024-08-07 15:44:24 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.15.Final
-2024-08-07 15:44:25 INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2024-08-07 15:44:25 WARN  org.hibernate.orm.connections.pooling - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
-2024-08-07 15:44:25 INFO  org.hibernate.orm.connections.pooling - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/employee_management]
-2024-08-07 15:44:25 INFO  org.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {user=root}
-2024-08-07 15:44:25 INFO  org.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
-2024-08-07 15:44:25 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 20 (min=1)
-2024-08-07 15:44:25 INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-2024-08-07 15:44:26 INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@f2b90fc] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
-2024-08-07 15:44:27 INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2024-08-07 15:44:27 INFO  com.ideas2it.ems.controller.DepartmentController - Departments displayed
-2024-08-07 15:49:58 ERROR com.ideas2it.ems.controller.EmployeeController - Invalid format.
-2024-08-07 15:50:04 ERROR com.ideas2it.ems.controller.EmployeeController - Invalid format.
-2024-08-07 16:16:40 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.15.Final
-2024-08-07 16:16:40 INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2024-08-07 16:16:41 WARN  org.hibernate.orm.connections.pooling - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
-2024-08-07 16:16:41 INFO  org.hibernate.orm.connections.pooling - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/employee_management]
-2024-08-07 16:16:41 INFO  org.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {user=root}
-2024-08-07 16:16:41 INFO  org.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
-2024-08-07 16:16:41 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 20 (min=1)
-2024-08-07 16:16:41 INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-2024-08-07 16:16:42 INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@2bb41f5c] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
-2024-08-07 16:16:42 INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2024-08-07 16:16:42 INFO  com.ideas2it.ems.controller.DepartmentController - Neural networks department added successfully.
-2024-08-07 16:16:46 INFO  com.ideas2it.ems.controller.DepartmentController - Departments displayed
-2024-08-07 16:16:48 INFO  com.ideas2it.ems.controller.DepartmentController - Departments displayed
-2024-08-07 16:16:49 INFO  com.ideas2it.ems.controller.DepartmentController - Displayed list of employees in the department HR
-2024-08-07 16:17:44 INFO  com.ideas2it.ems.controller.EmployeeController - Saiprasanth added successfully.
-2024-08-07 16:17:47 INFO  com.ideas2it.ems.controller.EmployeeController - All employees are displayed.
-2024-08-07 16:17:59 INFO  com.ideas2it.ems.controller.EmployeeController - Web Designingproject added successfully for Saiprasanth
-2024-08-07 16:18:04 INFO  com.ideas2it.ems.controller.EmployeeController - List of projects of employeeSaiprasanth
-2024-08-07 16:18:10 INFO  com.ideas2it.ems.controller.EmployeeController - Employee 19 Deleted.
-2024-08-07 16:18:14 INFO  com.ideas2it.ems.controller.EmployeeController - All employees are displayed.
-2024-08-07 16:18:42 INFO  com.ideas2it.ems.controller.ProjectController - Project added successfully : Data collection
-2024-08-07 16:18:44 INFO  com.ideas2it.ems.controller.ProjectController - Displayed list of departments.
-2024-08-07 16:18:46 INFO  com.ideas2it.ems.controller.ProjectController - Displayed list of departments.
-2024-08-07 16:18:47 INFO  com.ideas2it.ems.controller.ProjectController - Displayed List of employees in the project 1
-2024-08-07 16:18:49 INFO  com.ideas2it.ems.controller.ProjectController - Displayed list of departments.
-2024-08-07 16:24:12 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.15.Final
-2024-08-07 16:24:13 INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2024-08-07 16:24:13 WARN  org.hibernate.orm.connections.pooling - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
-2024-08-07 16:24:13 INFO  org.hibernate.orm.connections.pooling - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/employee_management]
-2024-08-07 16:24:13 INFO  org.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {user=root}
-2024-08-07 16:24:13 INFO  org.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
-2024-08-07 16:24:13 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 20 (min=1)
-2024-08-07 16:24:13 INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
-2024-08-07 16:24:14 INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@4f281aaf] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
-2024-08-07 16:24:14 INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2024-08-07 16:24:15 INFO  com.ideas2it.ems.controller.ProjectController - Displayed list of departments.
-2024-08-07 16:24:18 INFO  com.ideas2it.ems.controller.ProjectController - No employees present in the projectData collection
-2024-08-07 16:24:18 INFO  com.ideas2it.ems.controller.ProjectController - Displayed List of employees in the project 3
-2024-08-07 16:24:27 WARN  com.ideas2it.ems.controller.ProjectController - No project found.
+2024-08-08 15:31:22 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.15.Final
+2024-08-08 15:31:23 INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-08-08 15:31:23 WARN  org.hibernate.orm.connections.pooling - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2024-08-08 15:31:23 INFO  org.hibernate.orm.connections.pooling - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/employee_management]
+2024-08-08 15:31:23 INFO  org.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {user=root}
+2024-08-08 15:31:23 INFO  org.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+2024-08-08 15:31:23 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 20 (min=1)
+2024-08-08 15:31:23 INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2024-08-08 15:31:25 INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@5921b93c] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2024-08-08 15:31:25 INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-08-08 15:31:26 INFO  com.ideas2it.ems.controller.EmployeeController - All employees are displayed.
+2024-08-08 15:31:37 INFO  com.ideas2it.ems.controller.DepartmentController - Departments displayed
+2024-08-08 15:31:40 INFO  com.ideas2it.ems.controller.DepartmentController - Displayed list of employees in the department HR
+2024-08-08 16:14:59 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.15.Final
+2024-08-08 16:14:59 INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-08-08 16:15:00 WARN  org.hibernate.orm.connections.pooling - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2024-08-08 16:15:00 INFO  org.hibernate.orm.connections.pooling - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/employee_management]
+2024-08-08 16:15:00 INFO  org.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {user=root}
+2024-08-08 16:15:00 INFO  org.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+2024-08-08 16:15:00 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 20 (min=1)
+2024-08-08 16:15:00 INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2024-08-08 16:15:01 INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@114a5e0] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2024-08-08 16:15:01 INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-08-08 16:15:01 INFO  com.ideas2it.ems.controller.DepartmentController - Lead department added successfully.
+2024-08-08 16:15:12 INFO  com.ideas2it.ems.controller.DepartmentController - Departments displayed
+2024-08-08 16:15:15 INFO  com.ideas2it.ems.controller.DepartmentController - Departments displayed
+2024-08-08 16:15:18 INFO  com.ideas2it.ems.controller.DepartmentController - Displayed list of employees in the department HR
+2024-08-08 16:15:37 INFO  com.ideas2it.ems.controller.DepartmentController - Department name updated successfully for 9
+2024-08-08 16:15:42 INFO  com.ideas2it.ems.controller.DepartmentController - Departments displayed
+2024-08-08 16:15:44 INFO  com.ideas2it.ems.controller.DepartmentController - Lead Architect department deleted successfully.
+2024-08-08 16:15:47 INFO  com.ideas2it.ems.controller.DepartmentController - Departments displayed
+2024-08-08 16:17:02 INFO  com.ideas2it.ems.controller.EmployeeController - Sabari added successfully.
+2024-08-08 16:17:07 INFO  com.ideas2it.ems.controller.EmployeeController - All employees are displayed.
+2024-08-08 16:17:30 INFO  com.ideas2it.ems.controller.EmployeeController - Details updated successfully for Mega
+2024-08-08 16:17:33 INFO  com.ideas2it.ems.controller.EmployeeController - All employees are displayed.
+2024-08-08 16:18:05 INFO  com.ideas2it.ems.controller.EmployeeController - List of projects of employeeSaiprasanth
+2024-08-08 16:18:10 INFO  com.ideas2it.ems.controller.ProjectController - Displayed list of departments.
+2024-08-08 16:18:14 INFO  com.ideas2it.ems.controller.ProjectController - Displayed list of departments.
+2024-08-08 16:18:16 INFO  com.ideas2it.ems.controller.ProjectController - Displayed List of employees in the project 1
+2024-08-08 16:31:09 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.15.Final
+2024-08-08 16:31:10 INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-08-08 16:31:10 WARN  org.hibernate.orm.connections.pooling - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2024-08-08 16:31:10 INFO  org.hibernate.orm.connections.pooling - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/employee_management]
+2024-08-08 16:31:10 INFO  org.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {user=root}
+2024-08-08 16:31:10 INFO  org.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+2024-08-08 16:31:10 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 20 (min=1)
+2024-08-08 16:31:10 INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2024-08-08 16:31:11 INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@f2b90fc] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2024-08-08 16:31:11 INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-08-08 16:31:12 INFO  com.ideas2it.ems.controller.DepartmentController - Departments displayed
+2024-08-08 16:31:15 INFO  com.ideas2it.ems.controller.DepartmentController - Departments displayed
+2024-08-08 16:31:16 INFO  com.ideas2it.ems.controller.DepartmentController - Displayed list of employees in the department HR
+2024-08-08 16:33:01 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.15.Final
+2024-08-08 16:33:02 INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-08-08 16:33:02 WARN  org.hibernate.orm.connections.pooling - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2024-08-08 16:33:02 INFO  org.hibernate.orm.connections.pooling - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/employee_management]
+2024-08-08 16:33:02 INFO  org.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {user=root}
+2024-08-08 16:33:02 INFO  org.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+2024-08-08 16:33:02 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 20 (min=1)
+2024-08-08 16:33:03 INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2024-08-08 16:33:04 INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@5d508d22] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2024-08-08 16:33:04 INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-08-08 16:33:04 INFO  com.ideas2it.ems.controller.EmployeeController - All employees are displayed.
+2024-08-08 16:35:03 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.15.Final
+2024-08-08 16:35:03 INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-08-08 16:35:04 WARN  org.hibernate.orm.connections.pooling - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2024-08-08 16:35:04 INFO  org.hibernate.orm.connections.pooling - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/employee_management]
+2024-08-08 16:35:04 INFO  org.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {user=root}
+2024-08-08 16:35:04 INFO  org.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+2024-08-08 16:35:04 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 20 (min=1)
+2024-08-08 16:35:04 INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2024-08-08 16:35:05 INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@7da635c0] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2024-08-08 16:35:05 INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-08-08 16:35:05 INFO  com.ideas2it.ems.controller.DepartmentController - Developers department added successfully.
+2024-08-08 16:35:08 INFO  com.ideas2it.ems.controller.DepartmentController - Departments displayed
+2024-08-08 16:35:11 INFO  com.ideas2it.ems.controller.DepartmentController - Departments displayed
+2024-08-08 16:35:13 INFO  com.ideas2it.ems.controller.DepartmentController - Displayed list of employees in the department HR
+2024-08-08 16:57:15 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.15.Final
+2024-08-08 16:57:15 INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-08-08 16:57:15 WARN  org.hibernate.orm.connections.pooling - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2024-08-08 16:57:15 INFO  org.hibernate.orm.connections.pooling - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/employee_management]
+2024-08-08 16:57:15 INFO  org.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {user=root}
+2024-08-08 16:57:15 INFO  org.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+2024-08-08 16:57:15 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 20 (min=1)
+2024-08-08 16:57:16 INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2024-08-08 16:57:17 INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@2bb41f5c] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2024-08-08 16:57:17 INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-08-08 16:57:17 INFO  com.ideas2it.ems.controller.DepartmentController - Departments displayed
+2024-08-08 16:58:21 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.15.Final
+2024-08-08 16:58:21 INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-08-08 16:58:22 WARN  org.hibernate.orm.connections.pooling - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2024-08-08 16:58:22 INFO  org.hibernate.orm.connections.pooling - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/employee_management]
+2024-08-08 16:58:22 INFO  org.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {user=root}
+2024-08-08 16:58:22 INFO  org.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+2024-08-08 16:58:22 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 20 (min=1)
+2024-08-08 16:58:22 INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2024-08-08 16:58:23 INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@f2b90fc] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2024-08-08 16:58:23 INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-08-08 16:58:24 INFO  com.ideas2it.ems.controller.DepartmentController - Departments displayed
+2024-08-08 17:00:43 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.15.Final
+2024-08-08 17:00:43 INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-08-08 17:00:43 WARN  org.hibernate.orm.connections.pooling - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2024-08-08 17:00:43 INFO  org.hibernate.orm.connections.pooling - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/employee_management]
+2024-08-08 17:00:43 INFO  org.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {user=root}
+2024-08-08 17:00:43 INFO  org.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+2024-08-08 17:00:43 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 20 (min=1)
+2024-08-08 17:00:44 INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2024-08-08 17:00:45 INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@f2b90fc] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2024-08-08 17:00:45 INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-08-08 17:00:45 INFO  com.ideas2it.ems.controller.DepartmentController - Departments displayed
+2024-08-08 17:00:47 INFO  com.ideas2it.ems.controller.DepartmentController - Displayed list of employees in the department {}1
+2024-08-08 17:12:46 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.15.Final
+2024-08-08 17:12:47 INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-08-08 17:12:47 WARN  org.hibernate.orm.connections.pooling - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2024-08-08 17:12:47 INFO  org.hibernate.orm.connections.pooling - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/employee_management]
+2024-08-08 17:12:47 INFO  org.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {user=root}
+2024-08-08 17:12:47 INFO  org.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+2024-08-08 17:12:47 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 20 (min=1)
+2024-08-08 17:12:48 INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2024-08-08 17:12:49 INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@f2b90fc] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2024-08-08 17:12:49 INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-08-08 17:12:49 INFO  com.ideas2it.ems.controller.DepartmentController - Departments displayed
+2024-08-08 17:12:54 INFO  com.ideas2it.ems.controller.DepartmentController - Displayed list of employees in the department {}1
+2024-08-08 17:40:30 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.15.Final
+2024-08-08 17:40:31 INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-08-08 17:40:31 WARN  org.hibernate.orm.connections.pooling - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2024-08-08 17:40:31 INFO  org.hibernate.orm.connections.pooling - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/employee_management]
+2024-08-08 17:40:31 INFO  org.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {user=root}
+2024-08-08 17:40:31 INFO  org.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+2024-08-08 17:40:31 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 20 (min=1)
+2024-08-08 17:40:31 INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2024-08-08 17:40:33 INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@2bb41f5c] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2024-08-08 17:40:33 INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-08-08 17:40:33 INFO  com.ideas2it.ems.controller.DepartmentController - Testing department added successfully.
+2024-08-08 17:40:36 INFO  com.ideas2it.ems.controller.DepartmentController - Departments displayed
+2024-08-08 17:40:41 INFO  com.ideas2it.ems.controller.DepartmentController - Departments displayed
+2024-08-08 17:40:42 INFO  com.ideas2it.ems.controller.DepartmentController - Displayed list of employees in the department 1
+2024-08-08 17:40:56 INFO  com.ideas2it.ems.controller.DepartmentController - Department name updated successfully for 11
+2024-08-08 17:41:00 INFO  com.ideas2it.ems.controller.DepartmentController - Departments displayed
+2024-08-08 17:41:46 INFO  com.ideas2it.ems.controller.EmployeeController - Keerthana added successfully.
+2024-08-08 17:41:48 INFO  com.ideas2it.ems.controller.EmployeeController - All employees are displayed.
+2024-08-08 17:42:05 INFO  com.ideas2it.ems.controller.EmployeeController - Details updated successfully for Keerthana
+2024-08-08 17:42:07 INFO  com.ideas2it.ems.controller.EmployeeController - All employees are displayed.
+2024-08-08 17:42:17 INFO  com.ideas2it.ems.controller.EmployeeController - Data collectionproject added successfully for Keerthana
+2024-08-08 17:42:25 INFO  com.ideas2it.ems.controller.EmployeeController - No Projects Found.
+2024-08-08 17:42:35 INFO  com.ideas2it.ems.controller.EmployeeController - List of projects of employeeKeerthana
+2024-08-08 17:42:59 INFO  com.ideas2it.ems.controller.ProjectController - Project added successfully : Android Development
+2024-08-08 17:43:02 INFO  com.ideas2it.ems.controller.ProjectController - Displayed list of departments.
+2024-08-08 17:43:06 INFO  com.ideas2it.ems.controller.ProjectController - Displayed list of departments.
+2024-08-08 17:47:04 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.15.Final
+2024-08-08 17:47:05 INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-08-08 17:47:05 WARN  org.hibernate.orm.connections.pooling - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2024-08-08 17:47:05 INFO  org.hibernate.orm.connections.pooling - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/employee_management]
+2024-08-08 17:47:05 INFO  org.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {user=root}
+2024-08-08 17:47:05 INFO  org.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+2024-08-08 17:47:05 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 20 (min=1)
+2024-08-08 17:47:05 INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2024-08-08 17:47:06 INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@f2b90fc] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2024-08-08 17:47:06 INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-08-08 17:47:07 INFO  com.ideas2it.ems.controller.ProjectController - Displayed list of departments.
+2024-08-08 17:48:38 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 5.6.15.Final
+2024-08-08 17:48:39 INFO  org.hibernate.annotations.common.Version - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-08-08 17:48:39 WARN  org.hibernate.orm.connections.pooling - HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+2024-08-08 17:48:39 INFO  org.hibernate.orm.connections.pooling - HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://localhost:3306/employee_management]
+2024-08-08 17:48:39 INFO  org.hibernate.orm.connections.pooling - HHH10001001: Connection properties: {user=root}
+2024-08-08 17:48:39 INFO  org.hibernate.orm.connections.pooling - HHH10001003: Autocommit mode: false
+2024-08-08 17:48:39 INFO  org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl - HHH000115: Hibernate connection pool size: 20 (min=1)
+2024-08-08 17:48:40 INFO  org.hibernate.dialect.Dialect - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2024-08-08 17:48:41 INFO  org.hibernate.orm.connections.access - HHH10001501: Connection obtained from JdbcConnectionAccess [org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess@f2b90fc] for (non-JTA) DDL execution was not in auto-commit mode; the Connection 'local transaction' will be committed and the Connection will be set into auto-commit mode.
+2024-08-08 17:48:41 INFO  org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-08-08 17:48:41 INFO  com.ideas2it.ems.controller.ProjectController - Displayed list of departments.
+2024-08-08 17:48:42 INFO  com.ideas2it.ems.controller.ProjectController - Displayed List of employees in the project 1
+2024-08-08 17:49:11 INFO  com.ideas2it.ems.controller.EmployeeController - Android Developmentproject added successfully for Keerthana

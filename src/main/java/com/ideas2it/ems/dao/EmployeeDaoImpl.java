@@ -43,19 +43,12 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
     @Override
     public List<Employee> retrieveEmployees() throws EmployeeException {
-        Session session = HibernateConnection.getFactory().openSession();
-        Transaction transaction = null;
         List<Employee> employees;
-        try {
-            transaction = session.beginTransaction();
+        try (Session session = HibernateConnection.getFactory().openSession()) {
             Query<Employee> query = session.createQuery("FROM Employee WHERE isDeleted = :isDeleted", Employee.class)
                                            .setParameter("isDeleted", false);
             employees = query.list();
-            transaction.commit();
         } catch (HibernateException e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
             logger.error("Unable to get the employees");
             throw new EmployeeException("Unable to get employees", e);
         }
@@ -64,23 +57,14 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
     @Override
     public Employee retrieveEmployeeById(int id) throws EmployeeException {
-        Session session = HibernateConnection.getFactory().openSession();
-        Transaction transaction = null;
         Employee employee;
-        try {
-            transaction = session.beginTransaction();
+        try (Session session = HibernateConnection.getFactory().openSession()) {
             employee = session.createQuery("FROM Employee WHERE isDeleted = :isDeleted and employeeId = :employeeId", Employee.class)
                               .setParameter("isDeleted", false)
                               .setParameter("employeeId", id).uniqueResult();
-            transaction.commit();
         } catch (HibernateException e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
             logger.error("Unable to get the employee{}", id);
             throw new EmployeeException("Unable to get employee" + id, e);
-        } finally {
-            session.close();
         }
         return employee;
     }

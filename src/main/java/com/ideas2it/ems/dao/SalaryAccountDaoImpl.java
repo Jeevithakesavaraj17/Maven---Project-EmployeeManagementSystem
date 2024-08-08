@@ -40,16 +40,10 @@ public class SalaryAccountDaoImpl implements SalaryAccountDao {
 
     @Override 
     public SalaryAccount retrieveSalaryAccount(int id) throws EmployeeException {
-        Transaction transaction = null;
         SalaryAccount salaryAccount;
         try (Session session = HibernateConnection.getFactory().openSession()) {
-            transaction = session.beginTransaction();
             salaryAccount = session.get(SalaryAccount.class, id);
-            transaction.commit();
         } catch (Exception e) {
-            if (null != transaction) {
-                transaction.rollback();
-            }
             logger.error("Unable to get the salary account details");
             throw new EmployeeException("Unable to get the salary account details", e);
         }

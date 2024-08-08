@@ -8,7 +8,6 @@ import com.ideas2it.ems.dao.EmployeeDaoImpl;
 import com.ideas2it.ems.exception.EmployeeException;
 import com.ideas2it.ems.model.Employee;
 import com.ideas2it.ems.model.Department;
-import com.ideas2it.ems.model.Project;
 import com.ideas2it.ems.model.SalaryAccount;
 
 /**
@@ -20,13 +19,12 @@ import com.ideas2it.ems.model.SalaryAccount;
  */
 public class EmployeeServiceImpl implements EmployeeService {
     private final DepartmentService departmentService = new DepartmentServiceImpl();
-    private final ProjectService projectService = new ProjectServiceImpl();
     private final SalaryAccountService salaryAccountService = new SalaryAccountServiceImpl();
     private final EmployeeDao employeeDao = new EmployeeDaoImpl();
   
     @Override
     public Employee addEmployee(String employeeName, 
-                            LocalDate dateOfBirth, long phoneNumber,
+                            LocalDate dateOfBirth, String phoneNumber,
                             String mailId, int experience, int departmentId,
                             long accountNumber, String ifscCode) throws EmployeeException {
         Department department = departmentService.getDepartment(departmentId);
@@ -70,11 +68,6 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public Employee updateEmployeeDetails(Employee employee) throws EmployeeException {
         return employeeDao.updateEmployeeDetails(employee);
-    }
-
-    @Override
-    public void addProjectToEmployee(Project project, Employee employee) throws EmployeeException {
-        projectService.addProjectToEmployee(project, employee);
     }
 
     @Override

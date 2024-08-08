@@ -95,7 +95,7 @@ public class EmployeeController {
         scanner.nextLine();
         String employeeName = getEmployeeName();
         LocalDate birthDate = getDateOfBirth();
-        long phoneNumber = getPhoneNumber();
+        String phoneNumber = getPhoneNumber();
         scanner.nextLine();
         String mailId = getMailId();
         int experience = getExperience();
@@ -197,7 +197,7 @@ public class EmployeeController {
                     employee.setDateOfBirth(dateOfBirth);
                     break;
                 case 3:
-                    long phoneNumber = getPhoneNumber();
+                    String phoneNumber = getPhoneNumber();
                     employee.setPhoneNumber(phoneNumber);
                     break;
                 case 4:
@@ -280,7 +280,7 @@ public class EmployeeController {
                     if (null == project) {
                         logger.warn("No project found.");
                     } else {
-                        employeeService.addProjectToEmployee(project, employee);
+                        projectService.addProjectToEmployee(project, employee);
                         logger.info("{}project added successfully for {}", project.getProjectName(), employee.getEmployeeName());
                     }
                 }
@@ -415,18 +415,15 @@ public class EmployeeController {
      * Get employee phone number and validate.
      * @return phoneNumber     employee's phone number
      */
-    public long getPhoneNumber() {
-        long phoneNumber = 0;
-        String mobileNumber;
+    public String getPhoneNumber() {
+        String phoneNumber = "";
         try {
             System.out.print("Enter PhoneNumber : ");
-            phoneNumber = scanner.nextLong();
-            mobileNumber = String.valueOf(phoneNumber);
-            while (!Validator.isValidPhoneNumber(mobileNumber)) {
+            phoneNumber = scanner.nextLine();
+            while (!Validator.isValidPhoneNumber(phoneNumber)) {
                 System.out.print("Invalid format."
                                  + "Please Enter PhoneNumber :");
-                phoneNumber = scanner.nextLong();
-                mobileNumber = String.valueOf(phoneNumber);
+                phoneNumber = scanner.nextLine();
             }
         } catch (InputMismatchException e) {
             logger.error("Invalid format.Please enter correct mobile number format.");

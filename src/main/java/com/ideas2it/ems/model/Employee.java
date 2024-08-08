@@ -1,7 +1,8 @@
 package com.ideas2it.ems.model;
 
-import java.time.LocalDate;  
-import java.time.Period; 
+import com.ideas2it.ems.util.DateUtil;
+
+import java.time.LocalDate;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -61,7 +62,7 @@ public class Employee {
     private SalaryAccount salaryAccount;
 
     @Column(name = "phone_number")
-    private long phoneNumber;
+    private String phoneNumber;
 
     @Column(name = "mail_id")
     private String mailId;
@@ -100,7 +101,7 @@ public class Employee {
         this.salaryAccount = salaryAccount;
     }
  
-    public void setPhoneNumber(long phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
@@ -136,7 +137,7 @@ public class Employee {
         return salaryAccount;
     }
 
-    public long getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
@@ -176,12 +177,10 @@ public class Employee {
      * <p>
      * To calculate age from Date of Birth 
      * </p>
-     * @return age   employee's age
+     * @return String  calculate age and return in years and months.
      */
-    public int getAge() {
-        LocalDate dob = getDateOfBirth();
-        LocalDate curDate = LocalDate.now(); 
-        return Period.between(dob, curDate).getYears();
+    public String getAge() {
+        return DateUtil.calculateDifferenceBetweenDates(getDateOfBirth());
     }
 
     @Override
@@ -189,8 +188,8 @@ public class Employee {
         return "Employee Id :" + employeeId
               + "\nEmployee Name : " + employeeName 
               + "\nAge : " + getAge()
-              + "\nDepartment Id : " 
-              + department.getDepartmentId() 
+              + "\nDepartment Name : "
+              + department.getDepartmentName()
               + "\nSalary Account Number : "
               + salaryAccount.getAccountNumber()
               + "\nPhone Number : " + phoneNumber

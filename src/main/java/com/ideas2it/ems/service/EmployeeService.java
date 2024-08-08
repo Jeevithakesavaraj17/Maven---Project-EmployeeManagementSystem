@@ -5,7 +5,6 @@ import java.util.List;
 
 import com.ideas2it.ems.exception.EmployeeException;
 import com.ideas2it.ems.model.Employee;
-import com.ideas2it.ems.model.Project;
 
 /**
  * <p>
@@ -33,7 +32,7 @@ public interface EmployeeService {
      * @throws EmployeeException  If exception occurs, while inserting the employee data.
      */
     Employee addEmployee (String employeeName,
-                                 LocalDate dateOfBirth, long phoneNumber,
+                                 LocalDate dateOfBirth, String phoneNumber,
                                  String mailId, int experience, int departmentId,
                                  long accountNumber, String ifscCode) throws EmployeeException;
 
@@ -80,17 +79,6 @@ public interface EmployeeService {
      * @throws EmployeeException   If exception occurs, while checking for the employee.
      */
     boolean isEmployeePresent(int employeeId) throws EmployeeException;
-
-    /** 
-     * <p>
-     * Add project to the employee
-     * </p>
-     *
-     * @param employee   employee who we have to add project
-     * @param project    project which is added to employee
-     * @throws EmployeeException   If exception occurs, while adding project to the employee
-     */
-    void addProjectToEmployee(Project project, Employee employee) throws EmployeeException;
 
     /**
      * <p>

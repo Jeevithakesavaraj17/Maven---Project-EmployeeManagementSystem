@@ -46,74 +46,50 @@ public class DepartmentDaoImpl implements DepartmentDao {
 
     @Override
     public List<Department> retrieveDepartments() throws EmployeeException {
-        Session session = HibernateConnection.getFactory().openSession();
-        Transaction transaction = null;
+
         List<Department> departments;
-        try {
-            transaction = session.beginTransaction();
+        try (Session session = HibernateConnection.getFactory().openSession()) {
             Query<Department> query = session.createQuery("FROM Department WHERE isDeleted = :isDeleted", Department.class)
                                               .setParameter("isDeleted", false);
             departments = query.list();
             logger.debug("Retrieved list of departments.");
-            transaction.commit();
         } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
             logger.error("Unable to get the list of departments.");
             throw new EmployeeException("Unable to get the list of departments.", e);
-        } finally {
-            session.close();
         }
         return departments;
     }
   
     @Override
     public Department retrieveDepartment(int departmentId) throws EmployeeException {
-        Session session = HibernateConnection.getFactory().openSession();
-        Transaction transaction = null;
         Department department;
-        try {
-            transaction = session.beginTransaction();
+        try (Session session = HibernateConnection.getFactory().openSession()) {
             department = session.createQuery("FROM Department WHERE isDeleted = false and departmentId = :departmentId", Department.class)
                                 .setParameter("departmentId", departmentId).uniqueResult();
-            transaction.commit();
         } catch (HibernateException e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
             logger.error("Unable to get department for the ID : {}", departmentId);
             throw new EmployeeException("Unable to get department" + departmentId, e);
-        } finally {
-            session.close();
         }
         return department;
     }
-    
+
     @Override
     public List<Employee> retrieveEmployeesByDepartment(int departmentId) throws EmployeeException {
-        Session session = HibernateConnection.getFactory().openSession();
-        Transaction transaction = null;
         Department department = null;
         List<Employee> employees = null;
-        try {
-            transaction = session.beginTransaction();
+        try (Session session = HibernateConnection.getFactory().openSession()) {
             department = session.createQuery("FROM Department WHERE isDeleted = false and departmentId = :departmentId", Department.class)
                                 .setParameter("departmentId", departmentId).uniqueResult();
             if (null != department) {
                 employees = new ArrayList<>(department.getEmployees());
             }
-            transaction.commit();
         } catch (HibernateException e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
             assert department != null;
             logger.error("Unable to get employees for the department {}", department.getDepartmentName());
             throw new EmployeeException("Unable to get employees for the department " + department.getDepartmentName(), e);
-        } 
+        }
         return employees;
-    } 
+    }
 
     @Override 
     public Department updateDepartmentName(Department department) throws EmployeeException {
